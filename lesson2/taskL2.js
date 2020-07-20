@@ -109,3 +109,24 @@ if(currentHour >= 23 && currentHour < 5){
   console.log ('Добрий вечір, зараз у вас ' + currentTime);
 }
 
+// part b
+// part b
+let date = new Date();
+let currentHour = date.getHours();
+let currentTime = currentHour + ":" + date.getMinutes() + ":" + date.getSeconds();
+switch(true){
+  case(currentHour >= 23 && currentHour < 5):
+  console.log('Доброї ночі, зараз у вас ' + currentTime);
+  break;
+    case (currentHour >= 5 && currentHour < 11):
+     console.log('Добрий ранок, зараз у вас ' + currentTime);
+    break;
+    case (currentHour >= 11 && currentHour < 17):
+    console.log('Добрий день, зараз у вас '  + currentTime)
+      break;
+      case (currentHour >= 17 && currentHour < 23):
+        console.log ('Добрий вечір, зараз у вас ' + currentTime);
+        break;
+        default :
+         console.log('Перевірте дані вводу, оскільки час не збігається з реальним часом.');
+}
