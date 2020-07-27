@@ -130,3 +130,43 @@ function lastElem(arr, x) {
 }
 
 lastElem([3, 4, 10, -5]);
+
+//task 8
+
+/*8. Напишіть функцію, яка приймає рядок як параметр і 
+перетворює першу букву кожного слова рядка в верхній регістр.
+
+Input string: 'i love java script' 
+Output string: 'I Love Java Script' */
+// function capitalWord(firstLet){
+//   return newStr[0].toUpperCase() + newStr.slice(1);
+// }
+// capitalWord('hello');
+
+function upperCaseString(str) {
+  let newStr = str.split(' ');
+  let finalString = [];
+  for (let i = 0; i < newStr.length; i++) {
+    finalString.push(newStr[i][0].toUpperCase() + newStr[i].slice(1));
+  }
+
+  return finalString.join(' ');
+}
+console.log(upperCaseString('i love java script'));
+
+//version b
+function capitalWord(firstLet) {
+  return firstLet[0].toUpperCase() + firstLet.slice(1);
+}
+
+function upperCaseString(str) {
+  let newStr = str.split(' ');
+  let finalString = [];
+  for (let i = 0; i < newStr.length; i++) {
+    let returnedWord = capitalWord(newStr[i]);
+    finalString.push(returnedWord);
+  }
+
+  return finalString.join(' ');
+}
+console.log(upperCaseString('i love java script'));
