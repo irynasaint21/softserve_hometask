@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- TASK1 -->
+
+    <!-- <script>
+    let newWindow = window.open("", "", "width=300,height=300");
+    setTimeout(function(){newWindow.resizeBy(500, 500)}, 2000);
+    setTimeout(function(){newWindow.resizeTo(200,200)}, 2000);
+    setTimeout(function(){ newWindow.close()}, 2000);
+
+    </script> -->
+
+    <!-- task2 -->
+    <!-- <p id="text">I learning JavaScript events!</p>
+      <div>
+        <button id="btn">Change style!</button>
+        <script>
+          function changeCSS() {
+            const p = document.getElementById('text');
+            p.style.color = 'orange';
+            p.style.fontSize = '20px';
+            p.style.fontFamily = 'Comic Sans MS';
+          }
+          const btn = document.getElementById('btn');
+          btn.addEventListener('click', changeCSS);
+        </script>
+      </div>  -->
+
+    <!-- task3 -->
+
+    <!-- <div style="width: 1000px; height: 100px; padding: 10px;">
+      <button id="btn">Change color to blue</button>
+      <button id="btn">Double-click to make the page pink</button>
+      <button id="btn">Press and hold to make the page brown</button>
+      <a id="link" href="#"> Hover over to make the link yellow</a>
+    </div>
+    <script>
+
+      let elementsArray = document.querySelector('div');
+      let elemChildren = elementsArray.children;
+
+      function runEvent(elemChild,event, color) {
+          elemChild.addEventListener(event, function () {
+          elementsArray.style.background = color;
+         
+          });
+      }
+     
+      
+    runEvent(elemChildren[0], 'click', 'blue');
+    runEvent(elemChildren[1], 'dblclick', 'pink');
+    runEvent(elemChildren[2], 'mousedown', 'brown');
+    runEvent(elemChildren[2], 'mouseup', 'white');
+    runEvent(elemChildren[3], 'mouseenter', 'yellow');
+    runEvent(elemChildren[3], 'mouseleave', 'white'); 
+    </script> -->
+
+    <!-- TASK 4 -->
+    <!-- <select id="names">
+      <option className="options" value="Peter">Peter</option>
+      <option className="options" value="John">John</option>
+      <option className="options" value="Alise">Alise</option>
+      <option className="options" value="Alex">Alex</option>
+      <option className="options" value="Iren">Iren</option>
+      <input class="btn" type="submit" value="Choose and Delete"/>
+    </select> 
+  
+    
+    <script>
+      const btn = document.querySelector('.btn');
+
+      btn.addEventListener('click', deleteItem);
+
+      function deleteItem() {
+        let selectList = document.getElementById('names');
+        let indexList = selectList.selectedIndex;
+        let deletedOption = selectList.remove(selectList.selectedIndex);
+       
+      }
+    </script> -->
+
+    <!-- TASK 5 -->
+    <!-- <input id="btn" type="button" value="Live Button" />
+    <ul>
+
+    </ul>
+  
+    <script>
+      const btn = document.getElementById('btn');
+      function runEvent(event) {
+        
+            btn.addEventListener(event, function () {
+    
+            if(event === 'click'){
+          
+              const li = document.createElement('li');
+              li.appendChild(document.createTextNode('I was pressed'));
+              document.querySelector('ul').appendChild(li);
+              li.style.listStyle = 'none';
+
+            }
+            if (event === 'mouseover'){
+              const li = document.createElement('li');
+              li.appendChild(document.createTextNode('mouse on me'));
+              document.querySelector('ul').appendChild(li);
+              li.style.listStyle = 'none';
+    
+            }
+            if(event === "mouseleave"){
+              const li = document.createElement('li');
+              li.appendChild(document.createTextNode('mouse is not on me'));
+              document.querySelector('ul').appendChild(li);
+              li.style.listStyle = 'none';
+
+            }
+          });
+        }  
+
+        
+runEvent('click');
+runEvent('mouseover')
+runEvent('mouseleave');
+ </script> 
+   -->
+   
+    <!-- TASK 6
+    <p id="height"></p>
+    <p id="width"></p>
+
+    <script>
+      let heightContext = document.getElementById('height');
+      heightContext.textContent = `Height: ${window.innerHeight}`;
+      let widthContext = document.getElementById('width');
+      widthContext.textContent = `Width: ${window.innerWidth}`;
+
+      window.addEventListener('resize', function () {
+        heightContext.textContent = `Height: ${window.innerHeight}`;
+
+        widthContext.textContent = `Width: ${window.innerWidth}`;
+      });
+    </script> -->
+
+    <!-- TASK 7 -->
+    <!-- <select name="country" id="country">
+      <option disabled selected value> -- select an option -- </option>
+      <option id = "ger" value="ger">Germany</option>
+      <option id = "usa" value="usa">USA</option>
+      <option id = "ukr" value="ukr">Ukraine</option>
+    </select>
+
+    <select name="cities" id="cities"></select>
+    <p></p>
+    <script>
+      const country = document.getElementById('country');
+      country.addEventListener('change', changeCountry)  
+      // this.value indicates on country object
+
+      function changeCountry(){
+        cities.innerHTML = ''
+        switch (this.value) { 
+          case 'ger':
+          cities.add(new Option('Berlin', 'ber'));
+          cities.add(new Option('Munich', 'mun'));
+          cities.add(new Option('Frankfurt', 'frank'));
+            break;
+          case 'usa':
+          cities.add(new Option('New York', 'ny'));
+          cities.add(new Option('Houston', 'hst'));
+          cities.add(new Option('Washington', 'wshngt'));
+            break;
+          case 'ukr':
+          cities.add(new Option('Lviv', 'lviv'));
+          cities.add(new Option('Ternopil', 'trnpl'));
+          cities.add(new Option('Kyiv', 'kyiv'));
+            break;
+        }
+      }
+
+      const cities = document.getElementById('cities');
+      cities.addEventListener('change', changeCity);
+
+      function changeCity(){
+
+      let showContext = document.querySelector('p');
+      showContext.innerHTML = '';
+      showContext.id = 'show-context';
+      showContext.appendChild(document.createTextNode(`Country  ${country.options[country.selectedIndex].innerHTML} 
+      city ${cities.options[cities.selectedIndex].innerHTML}` ));
+      }
+    
+       
+    </script> -->
+  </body>
+</html>
