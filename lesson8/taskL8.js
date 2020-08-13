@@ -25,7 +25,7 @@ checkEmail('Qmail2@gmail.com');
 
 //task3
 let str = 'cdbBdbsbz';
-let regExp = /d(b+)(d)/gi
+let regExp = /d(b+)(d)/gi;
 console.log(regExp.exec(str));
 
 //task 4
@@ -49,7 +49,7 @@ validateCard();
 //task6
 
 function checkEmail(email) {
-  let re =/(^([a-zA-Z]+)((-?)(_?)[a-zA-Z0-9]*))@([a-zA-Z]+)\.[a-zA-Z]+$/;
+  let re = /(^([a-zA-Z]+)((-?)(_?)[a-zA-Z0-9]*))@([a-zA-Z]+)\.[a-zA-Z]+$/;
   if (re.test(email)) {
     console.log(`valid email: ${email}`);
   } else {
@@ -59,6 +59,13 @@ function checkEmail(email) {
 
 //TASK7
 
-function checkLogin(login){
-
-}
+  function checkLogin(login) {
+    let re = /^([a-zA-Z][a-zA-Z0-9\.]{1,9})$/;
+    let regex = /([0-9][.][0-9]+)|[0-9]+/gm
+      console.log(login.match(regex))
+    
+    return re.test(login)
+    
+  }
+  checkLogin('ee1.1r4t3')
+  
