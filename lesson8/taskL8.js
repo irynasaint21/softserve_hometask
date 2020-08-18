@@ -49,13 +49,17 @@ validateCard();
 //task6
 
 function checkEmail(email) {
-  let re = /(^([a-zA-Z]+)((-?)(_?)[a-zA-Z0-9]*))@([a-zA-Z]+)\.[a-zA-Z]+$/;
+  let re = /^[a-zA-Z]+\w*-?[a-zA-Z0-9]*@[a-zA-Z]+\.[a-zA-Z]+$/;
   if (re.test(email)) {
     console.log(`valid email: ${email}`);
   } else {
     console.log(`not valid email: ${email} `);
   }
 }
+console.log('my_ma-il@gmail.cm');
+console.log('m-y_ma-il@gmail.cm');
+console.log('1my_ma-il@gmail.cm');
+console.log('-_@gmail.cm');
 
 //TASK7
 
