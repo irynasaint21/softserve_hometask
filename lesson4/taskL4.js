@@ -33,7 +33,7 @@ calcRectangleArea(2, 4);
 
 function checkAge() {
   let userAge = prompt('Please enter your age: ');
-  if (userAge === '') {
+  if (userAge.trim() === '') {
     alert('You did not enter any data');
     throw new Error('User provided empty string');
   } else if (userAge < 14) {
@@ -46,7 +46,7 @@ function checkAge() {
     alert('Congratulation! Enjoy our webpage');
     return userAge;
   }
-}
+}c
 try {
   let userInputOfAge = checkAge();
   console.log(userInputOfAge);
@@ -57,6 +57,32 @@ try {
 }
 
 //task4 - classes - will be done later
+
+class MonthException {
+  constructor(message) {
+    this.message = message;
+    this.name = 'MonthException';
+  }
+}
+
+function showMonthName(month) {
+  month = month - 1; 
+  let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                'August', 'September', 'October', 'November', 'December'];
+  if (months[month]) {
+    return months[month];
+  } else {
+    throw new MonthException('Incorrect month number');
+  }
+}
+
+try { 
+  showMonthName(19); 
+}
+catch (e) {
+  console.log(e.message +' ' + e.name) 
+}
+
 
 //task5
 
@@ -78,7 +104,6 @@ function showUsers(ids) {
     try {
       result = showUser(ids[i]);
       newArray.push(result);
-      
     } catch (error) {
       console.log(error.message);
       console.log('Catch block');
