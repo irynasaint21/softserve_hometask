@@ -39,6 +39,7 @@ for (let i = 0; i < reloadSelectList.length; i++) {
   optionSelect.appendChild(document.createTextNode(componentName));
   reloadSelectList[i].append(optionSelect);
 }
+
 btnToDeleteFromSettings.addEventListener('click', removeComponent);
 }  
 
@@ -46,14 +47,22 @@ btnToDeleteFromSettings.addEventListener('click', removeComponent);
 
 function removeComponent(e) {
   
-  let componentNameFromSettingsToDelete = e.target.parentElement.id;
-  deleteComponentsFromApplication(componentNameFromSettingsToDelete);
-
   e.target.parentElement.remove();
-  deleteFromApplicationComponent = document.querySelectorAll('.choose-components');
-  for(let i = 0; i < deleteFromApplicationComponent.length; i++){
-    deleteFromApplicationComponent[i].remove(deleteFromApplicationComponent[i].selectedIndex);
-  }
+  let componentNameFromSettingsToDelete = e.target.parentElement.id;
+  console.log(componentNameFromSettingsToDelete);
+  deleteComponentsFromApplication(componentNameFromSettingsToDelete);
+  
+  getOptionsToRemove = document.querySelectorAll('.' + componentNameFromSettingsToDelete + '-option').forEach(function(component){
+    component.remove();
+  })
+
+  // deleteFromApplicationComponent = document.querySelectorAll('.choose-components');
+  // for(let i = 0; i < deleteFromApplicationComponent.length; i++){
+    
+  //     deleteFromApplicationComponent[i].remove(deleteFromApplicationComponent[i].selectedIndex);
+  //     console.log(deleteFromApplicationComponent[i]);
+    
+  // }
 
 }
 
@@ -66,8 +75,13 @@ function deleteComponentsFromApplication(componentNameFromSettingsToDelete) {
   
      if(a.name === componentNameFromSettingsToDelete){
       componentFromMenu = document.querySelectorAll('.span-' + room.name +'-'+ a.name ).forEach(function(el){
+        console.log(el);
+        console.log(componentNameFromSettingsToDelete);
+        console.log(a.name);
         el.remove();
-        deleteSpanWithTemp.remove()
+        if(componentNameFromSettingsToDelete.toLowerCase() === 'conditioner'){
+          deleteSpanWithTemp.remove()
+        }
        })
       }
      
@@ -199,7 +213,7 @@ for (let i = 0; i < btnAddComponentToRoomsObject.length; i++) {
         'Kitchen-Conditioner-input-number-box', 'span-toshow-temperature-Kitchen'); // fucntion to add components also to Grid View
 
         spanInMenuObject.appendChild(deleteBtn);
-        removeAddedComponentFromSelect('Kitchen-select'); // delete component from select when being added to select list
+        removeAddedComponentFromSelect('Kitchen-select'); // delete component from select when being added to UI list
 
         //add delete button functionality to our added components
         deleteBtn.id = kitchenComponent.name;
@@ -213,7 +227,7 @@ for (let i = 0; i < btnAddComponentToRoomsObject.length; i++) {
 
         let livingRoomComponent = createComponent('LivingRoom-select', newLineComponentLiving )
         newLineComponentLiving.className = livingRoom.name + '-' + livingRoomComponent.name;
-        // to add everything to span - li+input(checkbox)
+       
         spanInMenuObject = document.createElement('span');
         spanInMenuObject.className = `span-${livingRoom.name}-${livingRoomComponent.name} span-style`;
         livingRoomUl.appendChild(spanInMenuObject);
@@ -443,9 +457,10 @@ function deleteComponentFromMenuAndGrid(roomObject, roomComponentObject, idOfRoo
           spanToShowTemperatureDelete.remove(spanToShowTemperatureDelete) // delete field which show Temperature
         }
         
-        //to add to select list element after deleted it from Grid
+        // to add to select list element after deleted it from Grid
           roomObejctSelectList = document.getElementById(idOfRoomObjectSelect)
           optionCreateOfDeletedElement = document.createElement('option');
+          optionCreateOfDeletedElement.className = roomComponentObject.name + '-option';
           optionCreateOfDeletedElement.appendChild(document.createTextNode(roomComponentObject.name));
           roomObejctSelectList.appendChild(optionCreateOfDeletedElement);
     }
